@@ -2,7 +2,7 @@ ion-content {
 
   ion-searchbar {
     padding: 0px;
-    margin: 15px;
+    margin: 15px 15px 0px 15px;
     width: calc(100% - 30px);
     --box-shadow: 0px 2px 12px 0px #00000040;
     --border-radius: 4px;
@@ -25,7 +25,7 @@ ion-content {
   }
 
   .cnty-title {
-    margin: 0px 16px 0px;
+    margin: 10px 16px 0px;
     font-size: 14px;
     font-weight: 600;
   }
