@@ -56,7 +56,7 @@ export class FlagPopoverComponent implements OnInit {
   }
 
   getExistingCountryAPI() {
-    //TODO
+    //TODO : POST subcribe()
     //import api AFTER The response send tp arguments => this.formatResponse(this.response);    
     this.formatResponse(this.response);    
   }
@@ -95,8 +95,7 @@ export class FlagPopoverComponent implements OnInit {
         const filteredList = list.filter((country: any) => // Filter countries based on the search term
           country.toLowerCase().includes(lowerCaseSearchTerm)
         );
-
-        return label.toLowerCase().includes(lowerCaseSearchTerm) || filteredList.length > 0; // Include the region if either the label or filtered list has matches
+        return filteredList.length > 0; // filtered list has matches
       })
       .map(({ label, list }: any) => ({ // Update the list with filtered countries      
         label,
