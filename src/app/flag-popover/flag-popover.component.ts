@@ -52,7 +52,13 @@ export class FlagPopoverComponent implements OnInit {
   constructor(private flagService: CommonServiceService, private popoverController: PopoverController) { }
 
   ngOnInit() {
-    this.formatResponse(this.response);
+    this.getExistingCountryAPI()  
+  }
+
+  getExistingCountryAPI() {
+    //TODO
+    //import api AFTER The response send tp arguments => this.formatResponse(this.response);    
+    this.formatResponse(this.response);    
   }
 
   formatResponse(response: any) {
