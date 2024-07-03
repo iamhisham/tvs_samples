@@ -9,7 +9,7 @@ import { PopoverController } from '@ionic/angular';
 })
 export class FlagPopoverComponent implements OnInit {
 
-  searchCountry = '';
+  // TODO after get api delete the JSON
   response = [
     {
       "_id": { "$oid": "667d30a7e510cf75f2ac2888" },
@@ -46,19 +46,18 @@ export class FlagPopoverComponent implements OnInit {
   flag: any = [];
   filteredFlag: any[] = [];
   selectedFlag: any = "";
-
-  groupedData: any = {};
+  searchCountry = "";
 
   constructor(private flagService: CommonServiceService, private popoverController: PopoverController) { }
 
   ngOnInit() {
-    this.getExistingCountryAPI()  
+    this.getExistingCountryAPI()
   }
 
   getExistingCountryAPI() {
     //TODO : POST subcribe()
     //import api AFTER The response send tp arguments => this.formatResponse(this.response);    
-    this.formatResponse(this.response);    
+    this.formatResponse(this.response);
   }
 
   formatResponse(response: any) {
@@ -81,10 +80,14 @@ export class FlagPopoverComponent implements OnInit {
     this.selectedFlag = value;
   }
 
-  popoverDismissed() {
-    this.popoverController.dismiss({
-      data: this.selectedFlag
-    });
+  popoverDismissed(isSubmit: boolean) {
+    if (isSubmit)
+      this.popoverController.dismiss({
+        data: this.selectedFlag
+      });
+    else {
+      this.popoverController.dismiss();
+    }
   }
 
   filterSearch(searchTerm: string) {

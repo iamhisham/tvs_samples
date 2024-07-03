@@ -1,5 +1,5 @@
 <ion-content class="ion-no-padding">
-  <ion-searchbar (ionInput)="filterSearch(searchCountry)" [(ngModel)]="searchCountry" class="my-custom-searchbar"></ion-searchbar>
+  <ion-searchbar (ionInput)="filterSearch(searchCountry)" placeholder="Search by Country" [(ngModel)]="searchCountry" class="my-custom-searchbar"></ion-searchbar>
   <ion-list style="height: 312px; overflow: auto; margin: 0px 3px 10px 3px;" class="custom-scroller">
     <ion-radio-group [(ngModel)]="selectedFlag">
       <div *ngFor="let labellist of filteredFlag">
@@ -17,10 +17,10 @@
   <ion-grid class="ion-no-padding">
     <ion-row class="ion-no-padding">
       <ion-col class="ion-no-padding">
-        <ion-button fill="clear">Cancel</ion-button>
+        <ion-button (click)="popoverDismissed(false)" fill="clear">Cancel</ion-button>
       </ion-col>
       <ion-col class="ion-no-padding">
-        <ion-button (click)="popoverDismissed()" fill="clear">Apply</ion-button>
+        <ion-button (click)="popoverDismissed(true)" fill="clear">Apply</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
