@@ -1,0 +1,72 @@
+<ion-content [fullscreen]="true">
+  <ion-grid class="overall-main-container ion-no-padding">
+    <ion-row class="row">
+      <!-- lett view -->
+      <ion-col class="left-login-view primary_bg" size-xl="4" size-lg="4" size-md="12" size-sm="12" size-xs="12">
+
+        <!-- title_box -->
+        <ion-row class="primary_bg title_box">
+          <ion-col size="12" class="logo-view-wrapper">
+            <div class="inner-container">
+              <div *ngIf="isShowLogin" (click)="presentPopover(true)">
+                <img src="../../assets/icon/india-1617463_1280.webp" />
+                <p>{{updatedFlag}}</p>
+                <div class="icon-wrapper">
+                  <ion-icon name="caret-down-outline"></ion-icon>
+                </div>
+              </div>
+              <img src="../../assets/icon/Group 2336.png" />
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="primary_bg ion-hide-lg-down left-footer-wrapper">
+          <ion-col size="12">
+            <p>The TVS accerator app is for authorized personal only</p>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size-xl="8" size-lg="8" size-md="12" size-sm="12" size-xs="12" class="right-login-view">
+        <div class="overall-main-container">
+          <div class="middle-wrapper">
+            <div *ngIf="!isShowLogin">
+              <div class="select-popup"  (click)="presentPopover(true)">
+                <!-- flag -->
+                <div class="flag-wrapper">
+                  <div class="border-right-line">
+                    <div></div>
+                  </div>
+                </div>
+                <!-- text and icon -->
+                <div class="text-and-icon">
+                  <div class="text-wrapper">
+                    <p [ngClass]="{'selected' : updatedFlag}">{{updatedFlag ? updatedFlag : "Select the Country"}}</p>
+                  </div>
+                  <div class="icon-wrapper">
+                    <ion-icon name="caret-down-outline"></ion-icon>
+                  </div>
+                </div>
+              </div>
+              <!-- error -->
+              <div class="error-text">
+                <ion-text>
+                  "Please Select the Country"
+                </ion-text>
+              </div>
+              <div class="proceed-btn" >
+                <ion-buttons slot="primary" (click)="proceedToLogin()">
+                  <ion-button [disabled]="!updatedFlag" fill="outline">Proceed</ion-button>
+                </ion-buttons>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ion-footer class="ion-hide-lg-up footer-sm">
+          <ion-toolbar>
+            <p>The TVS accerator app is for authorized personal only</p>
+          </ion-toolbar>
+        </ion-footer>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

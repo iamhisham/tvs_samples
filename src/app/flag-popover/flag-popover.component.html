@@ -1,0 +1,27 @@
+<ion-content class="ion-no-padding">
+  <ion-searchbar (ionInput)="filterSearch(searchCountry)" [(ngModel)]="searchCountry" class="my-custom-searchbar"></ion-searchbar>
+  <ion-list style="height: 312px; overflow: auto; margin: 0px 3px 10px 3px;" class="custom-scroller">
+    <ion-radio-group [(ngModel)]="selectedFlag">
+      <div *ngFor="let labellist of filteredFlag">
+        <p class="cnty-title">{{labellist.label}}</p>
+        <ion-item *ngFor="let list of labellist.list;" lines="none">
+          <ion-radio  labelPlacement="end" justify="start" [value]="list" (ionSelect)="handleChange(list)">
+            <img style="height: 14px; padding-right: 6px;" src="../../assets/icon/india-1617463_1280.webp" />
+            {{ list }}</ion-radio>
+        </ion-item>
+      </div>
+    </ion-radio-group>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col class="ion-no-padding">
+        <ion-button fill="clear">Cancel</ion-button>
+      </ion-col>
+      <ion-col class="ion-no-padding">
+        <ion-button (click)="popoverDismissed()" fill="clear">Apply</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
