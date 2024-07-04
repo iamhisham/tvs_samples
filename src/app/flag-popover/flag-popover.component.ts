@@ -60,7 +60,7 @@ export class FlagPopoverComponent implements OnInit {
     this.formatResponse(this.response);
   }
 
-  formatResponse(response: any) {
+  formatResponse(response: any) {  //Like : [{label:"Asia"; list [ Bengalesh, Inida ]}, {label:"Latin America"; list [ Mexico ] } ]
     const regions: any = {};
     response.forEach((data: any) => {
       if (!regions[data.region_name]) {
