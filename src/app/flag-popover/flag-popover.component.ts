@@ -71,21 +71,21 @@ export class FlagPopoverComponent implements OnInit {
         flag: data.flag_url
       });
     });
-    
+
     this.flag = Object.keys(regions).map(region => ({
       label: region,
       list: regions[region]
     }));
 
     console.log(this.flag);
-    
+
     this.filteredFlag = [...this.flag];
   }
 
   handleChange(value: any) {
     this.selectedCountryFlag.country = value.list;
     this.selectedCountryFlag.flag = value.flag;
-    
+
   }
 
   popoverDismissed(isSubmit: boolean) {
@@ -103,15 +103,21 @@ export class FlagPopoverComponent implements OnInit {
 
     this.filteredFlag = this.flag
       .filter(({ list }: any) => {
+        console.log(list, 'asd');
+
         const filteredList = list.filter((country: any) => // Filter countries based on the search term
-          country.toLowerCase().includes(lowerCaseSearchTerm)
+        {
+          console.log(country);
+
+          return country.list.toLowerCase().includes(lowerCaseSearchTerm)
+        }
         );
         return filteredList.length > 0; // filtered list has matches
       })
       .map(({ label, list }: any) => ({ // Update the list with filtered countries and region     
         label,
         list: list.filter((country: any) =>
-          country.toLowerCase().includes(lowerCaseSearchTerm)
+          country.list.toLowerCase().includes(lowerCaseSearchTerm)
         )
       }));
   }
