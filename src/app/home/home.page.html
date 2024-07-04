@@ -10,7 +10,7 @@
             <div class="inner-container">
               <div *ngIf="isShowLogin" (click)="presentPopover(true)">
                 <img src="../../assets/icon/india-1617463_1280.webp" />
-                <p>{{updatedFlag}}</p>
+                <p>{{updatedFlag.country}}</p>
                 <div class="icon-wrapper">
                   <ion-icon name="caret-down-outline"></ion-icon>
                 </div>
@@ -29,18 +29,21 @@
       <ion-col size-xl="8" size-lg="8" size-md="12" size-sm="12" size-xs="12" class="right-login-view">
         <div class="overall-main-container">
           <div class="middle-wrapper">
-            <div *ngIf="!isShowLogin">
+            <div *ngIf="!isShowLogin">  
               <div class="select-popup"  (click)="presentPopover(true)">
                 <!-- flag -->
-                <div class="flag-wrapper">
-                  <div class="border-right-line">
-                    <div></div>
+                <div class="flag-wrapper" >
+                  <div class="border-right-line" [ngStyle]="{'opacity': updatedFlag.flag ? '100%' : '0.2'}">
+                    <div *ngIf="!updatedFlag.flag"></div>
+                    <ion-img *ngIf="updatedFlag.flag" style="height: 22px; width: 39px; margin-left: 4px;" [src]="updatedFlag.flag" />
                   </div>
                 </div>
+                
+
                 <!-- text and icon -->
                 <div class="text-and-icon">
                   <div class="text-wrapper">
-                    <p [ngClass]="{'selected' : updatedFlag}">{{updatedFlag ? updatedFlag : "Select the Country"}}</p>
+                    <p [ngClass]="{'selected' : updatedFlag}">{{updatedFlag.country ? updatedFlag.country : "Select the Country"}}</p>
                   </div>
                   <div class="icon-wrapper">
                     <ion-icon name="caret-down-outline"></ion-icon>

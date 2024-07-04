@@ -10,7 +10,7 @@ import { FlagPopoverComponent } from '../flag-popover/flag-popover.component';
 })
 export class HomePage {
 
-  updatedFlag: any;
+  updatedFlag: any= {};
   isShowLogin: any = false;
   constructor(public popoverController: PopoverController) { }
 

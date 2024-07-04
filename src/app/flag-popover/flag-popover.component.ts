@@ -45,7 +45,7 @@ export class FlagPopoverComponent implements OnInit {
 
   flag: any = [];
   filteredFlag: any[] = [];
-  selectedFlag: any = "";
+  selectedCountryFlag: any = {};
   searchCountry = "";
 
   constructor(private flagService: CommonServiceService, private popoverController: PopoverController) { }
@@ -66,24 +66,32 @@ export class FlagPopoverComponent implements OnInit {
       if (!regions[data.region_name]) {
         regions[data.region_name] = [];
       }
-      regions[data.region_name].push(data.country_name);
+      regions[data.region_name].push({
+        list: data.country_name,
+        flag: data.flag_url
+      });
     });
-
+    
     this.flag = Object.keys(regions).map(region => ({
       label: region,
       list: regions[region]
     }));
+
+    console.log(this.flag);
+    
     this.filteredFlag = [...this.flag];
   }
 
   handleChange(value: any) {
-    this.selectedFlag = value;
+    this.selectedCountryFlag.country = value.list;
+    this.selectedCountryFlag.flag = value.flag;
+    
   }
 
   popoverDismissed(isSubmit: boolean) {
     if (isSubmit)
       this.popoverController.dismiss({
-        data: this.selectedFlag
+        data: this.selectedCountryFlag
       });
     else {
       this.popoverController.dismiss();
@@ -94,13 +102,13 @@ export class FlagPopoverComponent implements OnInit {
     const lowerCaseSearchTerm = searchTerm.toLowerCase().trim();
 
     this.filteredFlag = this.flag
-      .filter(({ label, list }: any) => {
+      .filter(({ list }: any) => {
         const filteredList = list.filter((country: any) => // Filter countries based on the search term
           country.toLowerCase().includes(lowerCaseSearchTerm)
         );
         return filteredList.length > 0; // filtered list has matches
       })
-      .map(({ label, list }: any) => ({ // Update the list with filtered countries      
+      .map(({ label, list }: any) => ({ // Update the list with filtered countries and region     
         label,
         list: list.filter((country: any) =>
           country.toLowerCase().includes(lowerCaseSearchTerm)

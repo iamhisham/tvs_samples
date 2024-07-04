@@ -16,14 +16,6 @@ ion-content {
     border-radius: 12px;
   }
 
-  ion-searchbar::part(clear-icon) {
-    font-size: 24px; /* Adjust clear icon size */
-  }
-  
-  ion-searchbar::part(search-icon) {
-    font-size: 24px; /* Adjust search icon size */
-  }
-
   .cnty-title {
     margin: 10px 16px 0px;
     font-size: 14px;
