@@ -37,7 +37,7 @@
                     <div *ngIf="!updatedFlag.flag"></div>
                   </div>
                 </div>
-                
+
                 <ion-img class="selectedflag" *ngIf="updatedFlag.flag" [src]="updatedFlag.flag" />
 
                 <!-- text and icon -->
@@ -58,7 +58,7 @@
               </div>
               <div class="proceed-btn" >
                 <ion-buttons slot="primary" (click)="proceedToLogin()">
-                  <ion-button [disabled]="!updatedFlag" fill="outline">Proceed</ion-button>
+                  <ion-button [disabled]="!updatedFlag.country" fill="outline">Proceed</ion-button>
                 </ion-buttons>
               </div>
             </div>
